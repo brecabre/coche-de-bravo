@@ -1,0 +1,158 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://coche.gd" type="Script" id=1]
+[ext_resource path="res://camara.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 0.505276, 0.495631, 1 )
+
+[node name="coche" type="Spatial"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="vehicle" type="VehicleBody" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+motion/engine_force = 0.0
+motion/brake = 0.0
+motion/steering = 0.0
+body/mass = 50.0
+body/friction = 1.0
+script/script = ExtResource( 1 )
+engine_force = 40
+
+[node name="TestCube" type="TestCube" parent="vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="rueda_delantera_der" type="VehicleWheel" parent="vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.647924, 0.62714 )
+type/traction = false
+type/steering = true
+wheel/radius = 0.2
+wheel/rest_length = 0.15
+wheel/friction_slip = 10.5
+suspension/travel = 5.0
+suspension/stiffness = 5.88
+suspension/max_force = 6000.0
+damping/compression = 0.83
+damping/relaxation = 0.88
+
+[node name="rueda_trasera_der" type="VehicleWheel" parent="vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.647924, -0.589361 )
+type/traction = true
+type/steering = false
+wheel/radius = 0.2
+wheel/rest_length = 0.15
+wheel/friction_slip = 10.5
+suspension/travel = 5.0
+suspension/stiffness = 5.88
+suspension/max_force = 6000.0
+damping/compression = 0.83
+damping/relaxation = 0.88
+
+[node name="rueda_delantera_izq" type="VehicleWheel" parent="vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.647924, 0.62714 )
+type/traction = false
+type/steering = true
+wheel/radius = 0.2
+wheel/rest_length = 0.15
+wheel/friction_slip = 10.5
+suspension/travel = 5.0
+suspension/stiffness = 5.88
+suspension/max_force = 6000.0
+damping/compression = 0.83
+damping/relaxation = 0.88
+
+[node name="rueda_trasera_izq" type="VehicleWheel" parent="vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.647924, -0.589361 )
+type/traction = true
+type/steering = false
+wheel/radius = 0.2
+wheel/rest_length = 0.15
+wheel/friction_slip = 10.5
+suspension/travel = 5.0
+suspension/stiffness = 5.88
+suspension/max_force = 6000.0
+damping/compression = 0.83
+damping/relaxation = 0.88
+
+[node name="camara_base" type="Spatial" parent="vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="vehicle/camara_base"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -1, -8.74228e-08, 0, -8.1678e-08, 0.934287, 0.356521, -3.1168e-08, 0.356521, -0.934287, 0, 2.86752, -8.59383 )
+projection = 0
+fov = 60.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+script/script = ExtResource( 2 )
+min_distance = 0.5
+max_distance = 4.0
+angle_v_adjust = 0.0
+autoturn_ray_aperture = 25
+autoturn_speed = 50
+
+[node name="Label" type="Label" parent="vehicle"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 226.0
+margin/bottom = 105.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
