@@ -10,15 +10,16 @@ var steer_target = 0
 export var engine_force = 400
 
 func grabar_fantasma():
-	GLOBAL.posicion_fantasma.append(get_global_transform())
+	GLOBAL.posicion_coche.append(get_global_transform())
 
 func _fixed_process(delta):
-	grabar_fantasma()
+	if GLOBAL.grabar_fantasma:
+		grabar_fantasma()
 	
 	get_node("Label").set_text(str(get_linear_velocity().length()))
 	
-	if (Input.is_action_pressed("guardar_fantasma")):
-		GLOBAL.save_game()
+#	if (Input.is_action_pressed("guardar_fantasma")):
+#		GLOBAL.save_game()
 #		print ((get_translation()))
 	if (Input.is_action_pressed("ui_left")):
 		steer_target = -STEER_LIMIT

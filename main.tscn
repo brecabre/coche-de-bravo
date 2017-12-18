@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://coche.tscn" type="PackedScene" id=2]
 [ext_resource path="res://terreno.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1, 1 )
 
 [node name="main" type="Spatial"]
 
@@ -16,6 +20,41 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.023, 1.96694, -55.97
 [node name="vehicle" parent="coche"]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="rueda_delantera_der" parent="coche/vehicle"]
+
+wheel/roll_influence = 0.1
+
+[node name="rueda_trasera_der" parent="coche/vehicle"]
+
+wheel/roll_influence = 0.1
+
+[node name="rueda_delantera_izq" parent="coche/vehicle"]
+
+wheel/roll_influence = 0.1
+
+[node name="rueda_trasera_izq" parent="coche/vehicle"]
+
+wheel/roll_influence = 0.1
+
+[node name="TestCube" type="TestCube" parent="coche/vehicle"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5793, 1.26668, -0.0409813 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
 
 [node name="terreno" parent="." instance=ExtResource( 3 )]
 
@@ -43,10 +82,38 @@ shadow/max_distance = 0.0
 shadow/split_weight = 0.5
 shadow/zoffset_scale = 2.0
 
-[node name="Position3D" type="Position3D" parent="."]
+[node name="Area" type="Area" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.4877, 1.27057, -56.21 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0083, 0, 0 )
+input/ray_pickable = false
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1615, 0 )
+shapes/0/trigger = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision/layers = 1
+collision/mask = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1615, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="Area" to="." method="_on_Area_body_enter"]
 
 
 [editable path="coche"]
