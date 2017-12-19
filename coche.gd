@@ -18,9 +18,9 @@ func _fixed_process(delta):
 	
 	get_node("Label").set_text(str(get_linear_velocity().length()))
 	
-#	if (Input.is_action_pressed("guardar_fantasma")):
-#		GLOBAL.save_game()
-#		print ((get_translation()))
+	if (Input.is_action_pressed("guardar_fantasma")):
+		GLOBAL.save_game()
+#	
 	if (Input.is_action_pressed("ui_left")):
 		steer_target = -STEER_LIMIT
 	elif (Input.is_action_pressed("ui_right")):

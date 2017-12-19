@@ -1,16 +1,21 @@
 extends Node
 
+# graba las posiciones del coche y del fantasma
+
 var posicion_coche =[]
 var posicion_fantasma =[]
-var record_vuelta = 0
+
+# graba los tiempos del coche y del fantasma con la longitud de las listas
+#var tiempo_coche = posicion_coche.size()
+#var tiempo_fantasma = posicion_fantasma.size()
+
 var grabar_fantasma = true
+
 var direccion = "res://fantasma.json"
-var diccionario = {"posicion_fantasma":posicion_fantasma,
-					"record_vuelta":record_vuelta
-					}
+#var diccionario = {"posicion_fantasma":posicion_fantasma}
 
 func save_game():
-	var salvar = {"diccionario":diccionario}	
+	var salvar = {"posicion_fantasma":posicion_fantasma}
 	var file = File.new()
 	file.open(direccion, file.WRITE)
 	file.store_line(salvar.to_json())
@@ -24,6 +29,7 @@ func load_game():
 	
 	file.open(direccion, File.READ)
 	var data = {}
+#	data.parse_json(file.get_as_text())
 	data.parse_json(file.get_as_text())
-	diccionario = data.diccionario
-	
+#	diccionario = data.diccionario
+	posicion_fantasma = data.posicion_fantasma
