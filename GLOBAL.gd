@@ -14,13 +14,9 @@ var grabar_fantasma = true
 var direccion = "res://fantasma.json"
 #var diccionario = {"posicion_fantasma":posicion_fantasma}
 
-func save_game():
-	var salvar = {"posicion_fantasma":posicion_fantasma}
-	var file = File.new()
-	file.open(direccion, file.WRITE)
-	file.store_line(salvar.to_json())
-	file.close()
 
+    return salvardicc
+	
 func load_game():  
 	
 	var file = File.new()

@@ -58,6 +58,13 @@ func _fixed_process(delta):
 	
 	set_steering(steer_angle)
 
+func salvar():
+    var salvardicc = {
+#       
+        posx = get_transform().basis.x,
+		posy = get_transform().basis.y,
+        posz = get_transform().basis.z
+}
 
 func _ready():
 	set_fixed_process(true)
