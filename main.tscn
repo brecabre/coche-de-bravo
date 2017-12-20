@@ -17,27 +17,9 @@ script/script = ExtResource( 1 )
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.023, 1.96694, -55.9701 )
 
-[node name="vehicle" parent="coche" groups=[
-"persist",
-]]
+[node name="vehicle" parent="coche"]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-
-[node name="rueda_delantera_der" parent="coche/vehicle"]
-
-wheel/roll_influence = 0.1
-
-[node name="rueda_trasera_der" parent="coche/vehicle"]
-
-wheel/roll_influence = 0.1
-
-[node name="rueda_delantera_izq" parent="coche/vehicle"]
-
-wheel/roll_influence = 0.1
-
-[node name="rueda_trasera_izq" parent="coche/vehicle"]
-
-wheel/roll_influence = 0.1
 
 [node name="TestCube" type="TestCube" parent="coche/vehicle"]
 
