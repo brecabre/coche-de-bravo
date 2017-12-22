@@ -8,7 +8,7 @@
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="main" type="Spatial"]
+[node name="circuito_1" type="Spatial"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 1 )
@@ -19,7 +19,12 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.023, 1.96694, -55.97
 
 [node name="vehicle" parent="coche"]
 
+editor/display_folded = true
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="camara_base" parent="coche/vehicle"]
+
+editor/display_folded = true
 
 [node name="TestCube" type="TestCube" parent="coche/vehicle"]
 
@@ -66,7 +71,7 @@ shadow/max_distance = 0.0
 shadow/split_weight = 0.5
 shadow/zoffset_scale = 2.0
 
-[node name="Area" type="Area" parent="."]
+[node name="meta" type="Area" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0083, 0, 0 )
@@ -89,7 +94,7 @@ monitorable = true
 collision/layers = 1
 collision/mask = 1
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="colision_meta" type="CollisionShape" parent="meta"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1615, 0 )
@@ -97,7 +102,7 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[connection signal="body_enter" from="Area" to="." method="_on_Area_body_enter"]
+[connection signal="body_enter" from="meta" to="." method="_on_meta_body_enter"]
 
 
 [editable path="coche"]
