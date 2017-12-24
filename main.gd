@@ -8,7 +8,7 @@ var fantasma_corre = false
 
 
 func _ready():
-	cargar_fantasma()
+	
 	set_process_input(true)
 	set_fixed_process(true)
 
@@ -17,11 +17,11 @@ func cargar_fantasma():
 	GLOBAL.load_game()
 	var fantasma = fantasma_escena.instance()
 	get_parent().add_child(fantasma)
-
+	
 ### hace correr al fantasma recorriendo las listas del diccionario con "numero_frame" ###
 func fantasma_corre():
 	var nodo_fantasma = get_tree().get_root().get_node("fantasma")
-	
+	print(nodo_fantasma)
 	if GLOBAL.posiciones_fantasma_circuito_1.empty():
 		pass	
 	else:
